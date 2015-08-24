@@ -4,3 +4,6 @@ changelog. It seems like what I should really be doing is generating a patch
 and updating the old package from there on. See here for details:
 
     https://www.debian.org/doc/manuals/maint-guide/update.en.html
+
+The previous deb/dsc files in the repo were deleted...this seems wrong and
+maybe has to do with the lack of a patch.
