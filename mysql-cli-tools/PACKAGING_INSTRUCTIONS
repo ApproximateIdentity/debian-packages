@@ -1,0 +1,37 @@
+PACKAGING INSTRUCTIONS
+======================
+
+Here are the basic steps necessary to produce and update a new python debian
+package or update for a new upstream release:
+
+1) Get a copy of the original source and store it in the current directory as
+`$package-$vers.tar.gz`. This can be created by running
+
+    $ python setup.py sdist
+
+in the original source release.
+
+2) Create the necessary debian files by running the following command:
+
+	$ py2dsc -m 'Thomas Nyberg <tomnyberg@gmail.com>' $package-$vers.tar.gz 
+
+3) Copy/replace the generated files with our own custom files by running:
+
+	$ cp -v debian/* deb_dist/$package-$vers/debian
+
+4) If this is a version update, you need the original source of the _previous_
+version. It should be called `$package_$~vers.orig.tar.gz` (where $~vers is
+supposed to indicate the previous version number). Save this version inside the
+deb_dist/ folder.
+
+5) You also need to copy the _previous_ release's changelog file to the
+`deb_dist/$package-$vers/debian/` folder as well.
+
+6) Go into the `deb_dist/$package-$vers/` folder and update the changelog by
+running the following:
+
+    $ dch -v $vers-1
+
+7) Finally run the following inside the `deb_dist/$package-$vers/` folder:
+
+    $ debuild -uc -us
