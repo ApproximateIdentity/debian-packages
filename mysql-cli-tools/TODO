@@ -1,0 +1,6 @@
+* The process of updating packaging here seems wrong. Currently I'm basically
+regenerating the initial package for each version and then changing the
+changelog. It seems like what I should really be doing is generating a patch
+and updating the old package from there on. See here for details:
+
+    https://www.debian.org/doc/manuals/maint-guide/update.en.html
